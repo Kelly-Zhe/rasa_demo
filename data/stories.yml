@@ -1,0 +1,72 @@
+version: "2.0"
+stories:
+# - story: activate photo form
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: photo
+#   - action: photo_form
+#   - active_loop: photo_form
+
+- story: photo service stop
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_ask_other_order
+
+- story: photo service continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+
+# - story: activate fetch form
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: fetch
+#   - action: fetch_form
+#   - active_loop: fetch_form
+
+- story: fetch service stop
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_ask_other_order
+  
+- story: fetch service continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+

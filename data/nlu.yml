@@ -1,0 +1,191 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - 你好
+    - 在吗
+    - 帮我个忙
+    - 我需要帮助
+    - 过来一下
+    - 快来
+    - 上午好
+    - 下午好
+    - nihao
+    - Nihao
+    - 晚上好
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - 你好啊
+- intent: goodbye
+  examples: |
+    - 再见
+    - 拜拜
+    - 没事了
+    - 算了
+    - 拜拜了您内
+    - 滚吧
+    - 垃圾
+    - 说你妈呢
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: fetch
+  examples: |
+    - 帮我拿个东西
+    - 拿东西
+    - 拿
+    - 拿个东西
+    - 去[办公室](fetch_position)拿
+    - 去[机房](fetch_position)拿
+    - 去[书房](fetch_position)拿
+    - 去[会议室](fetch_position)拿
+    - 去[里面](fetch_position)拿
+    - 拿[书本](fetch_thing)过来
+    - 拿[书包](fetch_thing)过来
+    - 拿[电脑](fetch_thing)
+    - 帮我拿[笔记本](fetch_thing)
+    - 帮我去拿[铅笔](fetch_thing)
+    - 去[厨房](fetch_position)帮我拿一下[椅子](fetch_thing)
+    - 去[厕所](fetch_position)帮我拿一下[纸巾](fetch_thing)
+    - 去[车库](fetch_position)拿[架子](fetch_thing)
+    - 去[物业](fetch_position)拿一下[快递](fetch_thing)
+    - 去[物业](fetch_position)拿一下[收据](fetch_thing)
+    - 去[菜鸟驿站](fetch_position)取一下我的[快递](fetch_thing)
+    - 去[菜鸟驿站](fetch_position)取一下我的[包裹](fetch_thing)
+    - 去[厨房](fetch_position)拿[锅](fetch_thing)过来
+    - 去[阳台](fetch_position)收一下[衣服](fetch_thing)
+    - 去[客厅](fetch_position)
+    - 去[会议室](fetch_position)帮我拿[电脑](fetch_thing)
+    - 去[厨房](fetch_position)拿[酱油](fetch_thing)
+    - 帮我把[鼠标](fetch_thing)拿过来
+    - 先帮我拿东西吧
+    - 帮我拿杯[水](fetch_thing)
+    - 帮我拿个[橘子](fetch_thing)
+    - 帮我拿[苹果](fetch_thing)
+    - 帮我去[厨房](fetch_position)拿个[橘子](fetch_thing)
+    - 去[厨房](fetch_position)拿
+    - 拿[橘子](fetch_thing)
+    - 先拿东西吧
+    - 帮我拿一个[橘子](fetch_thing)
+    - 帮我拿[书包](fetch_thing)过来
+    - 先帮我拿个东西
+    - 去[厨房](fetch_position)里拿
+    - 帮我拿[水杯](fetch_thing)
+    - 帮我拿东西
+    - 帮我拿[电脑](fetch_thing)
+    - 先拿东西
+    - 帮我拿[书包](fetch_thing)
+    - 帮我拿一下[书包](fetch_thing)
+    - 先帮我倒杯水吧
+    - 去[厨房](fetch_position)帮我拿[水](fetch_thing)
+    - 先去帮我拿杯[水](fetch_thing)吧
+    - [冰箱](photo_thing)[冰箱](photo_thing)
+- intent: photo
+  examples: |
+    - 帮我拍个照
+    - 拍照
+    - 给我拍个照
+    - 拍个照
+    - 帮我拍一下[花](photo_thing)
+    - 帮我拍一下[垃圾桶](photo_thing)
+    - 帮我拍一下[桌子](photo_thing)
+    - 拍[电脑](photo_thing)
+    - 拍[书包](photo_thing)
+    - 给[铅笔](photo_thing)拍张照
+    - 帮我拍[水杯](photo_thing)
+    - 给[笔记本](photo_thing)拍照
+    - 帮我拍一下[机房](photo_position)的[电脑](photo_thing)
+    - 帮我拍一下[办公室](photo_position)的[桌子](photo_thing)
+    - 去[会议室](photo_position)拍一下[椅子](photo_thing)
+    - 帮我去[会议室](photo_position)拍个照
+    - 帮我去[会议室](photo_position)拍照
+    - 去[办公室](photo_position) 拍照
+    - 去[机房](photo_position) 拍照
+    - 去[会议室](photo_position) 拍照
+    - 去[会议室](photo_position)拍
+    - 去[机房](photo_position)拍
+    - 拍照吧
+    - 先帮我拍个照吧
+    - 先拍照，我再决定
+    - 去[厨房](photo_position)拍
+    - 拍一下[水杯](photo_thing)
+    - 去[厨房](photo_position)拍照
+    - 帮我拍照
+    - 帮我拍一下[厨房](photo_position)
+    - 去[书房](photo_position)拍照
+    - 先帮我拍照
+    - 先帮我拍照吧
+    - 去[客厅](photo_position)拍照
+    - 帮我拍一下[橘子](photo_thing)
+    - 拍一下[冰箱](photo_position)里的[苹果](photo_thing)
+    - 帮我拍一下[冰箱](photo_thing)
+    - 帮我拍一下[杯子](photo_thing)
+- intent: deny
+  examples: |
+    - 不
+    - 不对
+    - 不是
+    - 不是去哪里
+    - 不是拿这个
+    - 我不是要这个
+    - 我不要
+    - 我不是这个意思
+    - 错了
+    - 我不告诉你
+    - 我凭什么告诉你
+    - 我不说
+    - 不用了
+- intent: out_of_scope
+  examples: |
+    - 我改变主意了
+    - 我为什么要告诉你
+    - 我现在不想做这件事了
+    - 算了
+    - 哎
+    - 随便你吧
+    - 我想要其他的
+    - 我想订个披萨
+    - 我想订餐
+    - 我想听音乐
+    - 告诉我今天的天气
+    - 你为什么是个机器人
+- intent: affirm
+  examples: |
+    - 确定
+    - 是的
+    - 嗯嗯
+    - 好的
+    - 确认
+    - 没错
+    - yes
+    - y
+    - yep
+    - of course
+    - 好吧
+    - 那就这样吧
+    - 就这样吧
+- intent: ask_id
+  examples: |
+    - 告诉我对话id
+    - 我的对话id是多少
+    - 对话id
+    - conversation id

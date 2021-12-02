@@ -1,0 +1,150 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- stop:
+    use_entities: true
+- photo:
+    use_entities: true
+- greet:
+    use_entities: true
+- fetch:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- deny:
+    use_entities: true
+- affirm:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+- ask_id:
+    use_entities: true
+entities:
+- fetch_position
+- fetch_thing
+- photo_position
+- photo_thing
+slots:
+  fetch_position:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  fetch_thing:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  photo_position:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  photo_thing:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  next_form_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  previous_form_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_out_of_scope:
+  - text: 我不明白您的意思，您说点我能听懂的吧！
+  utter_ask_fetch_position:
+  - text: 要拿的东西在什么地方呢？
+  utter_ask_fetch_thing:
+  - text: 好的，具体要拿什么东西呢？
+  utter_ask_other_order:
+  - text: 请问还有什么其他需要帮助您的吗?
+  utter_ask_photo_thing:
+  - text: 好的，要拍什么东西呢？
+  utter_ask_photo_position:
+  - text: 好的，要去哪里拍照呢？
+  utter_deny:
+  - text: 我帮您去找！
+  utter_did_help:
+  - text: 我有帮到您吗?
+  utter_goodbye:
+  - text: 再见，下次有事您找我
+  utter_greet:
+  - text: 你好主人，我有什么可以帮您的呢？您可以说：拿东西或者拍照
+  utter_inform_order:
+  - text: 好的，交给我吧
+  utter_default:
+  - text: 对不起，我没明白您的意思，请您再试一次
+  utter_my_default:
+  - text: 不好意思，我没听懂, try again~plz
+  utter_submit:
+  - text: All done!
+  utter_wrong_photo_position:
+  - text: 您输入的位置不在数据库中，请重新输入
+  utter_ask_whatelse:
+  - text: 有什么其他我可以帮助你的吗？我可以帮你拿东西或者拍照
+  utter_ask_rephrase:
+  - text: 不好意思，我没明白您说的什么意思，您能换个说法吗？
+  utter_ask_affirmation:
+  - buttons:
+    - payload: /photo
+      title: 拍照
+    - payload: /fetch
+      title: 拿东西
+    - payload: /out_of_scope
+      title: out of scope
+    text: 你的意思是？
+actions:
+- action_default_ask_affirmation
+- action_switch_back_ask
+- action_switch_forms_affirm
+- action_switch_forms_ask
+- action_switch_forms_deny
+- action_two_stage_fallback
+- action_submit_fetch_form
+- action_submit_photo_form
+- utter_goodbye
+- utter_greet
+- validate_fetch_form
+- validate_photo_form
+- action_session_id
+forms:
+  fetch_form:
+    fetch_position:
+    - entity: fetch_position
+      intent: fetch
+      not_intent: photo
+      type: from_entity
+    fetch_thing:
+    - entity: fetch_thing
+      intent: fetch
+      not_intent: photo
+      type: from_entity
+  photo_form:
+    photo_position:
+    - entity: photo_position
+      intent: photo
+      not_intent: fetch
+      type: from_entity
+    photo_thing:
+    - entity: photo_thing
+      intent: photo
+      not_intent: fetch
+      type: from_entity
+e2e_actions: []

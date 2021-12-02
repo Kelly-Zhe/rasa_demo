@@ -1,0 +1,149 @@
+version: "2.0"
+
+stories:
+
+- story: photo switch to fetch + deny
+  steps:
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+  - intent: fetch
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: fetch_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: photo_form
+  - active_loop: photo_form
+
+- story: photo switch to fetch + affirm + switch back + deny
+  steps:
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+  - intent: fetch
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: fetch_form
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: photo_form
+  - action: fetch_form
+  - active_loop: fetch_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_fetch_form
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: deny
+  - action: utter_ask_whatelse
+
+
+- story: photo switch to fetch, affirm + switch back, affirm
+  steps:
+  - intent: photo
+  - action: photo_form
+  - active_loop: photo_form
+  - intent: fetch
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: fetch_form
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: photo_form
+  - action: fetch_form
+  - active_loop: fetch_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_fetch_form
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: affirm
+  - action: photo_form
+  - active_loop: photo_form
+  
+
+
+- story: fetch switch to photo + deny
+  steps:
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+  - intent: photo
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: photo_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: fetch_form
+  - active_loop: fetch_form
+
+- story: fetch switch to photo + affirm + switch back + deny
+  steps:
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+  - intent: photo
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: photo_form
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: fetch_form
+  - action: photo_form
+  - active_loop: photo_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_photo_form
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: deny
+  - action: utter_ask_whatelse
+
+
+- story: fetch switch to photo, affirm + switch back, affirm
+  steps:
+  - intent: fetch
+  - action: fetch_form
+  - active_loop: fetch_form
+  - intent: photo
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: photo_form
+  - intent: affirm
+  - action: action_switch_forms_affirm
+  - slot_was_set:
+    - next_form_name: null
+  - slot_was_set:
+    - previous_form_name: fetch_form
+  - action: photo_form
+  - active_loop: photo_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_photo_form
+  - action: action_switch_back_ask
+  - slot_was_set:
+    - previous_form_name: null
+  - intent: affirm
+  - action: fetch_form
+  - active_loop: fetch_form
